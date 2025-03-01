@@ -20,4 +20,4 @@ Use ww
 
 After that script update your colors,wallpapers
 
-In the next updates I will expand the number of programs with which the script works.
+In the next updates I will expand the number of programs with which the script works. I’ll also write an auto-installer, and the choice of the wallpaper folder on the first start soon.
