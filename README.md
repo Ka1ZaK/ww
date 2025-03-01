@@ -20,7 +20,7 @@ mv ww /bin/ or mv ww /sbin/
 ```
 ww in terminal
 ```
-[![# Showcase](https://www.youtube.com/watch?v=abc123)]
+[!Showcase](https://www.youtube.com/watch?v=aHvs3dk8ca8)]
 
 
 After that script update your colors,wallpapers, and configs with compaitable programs.
