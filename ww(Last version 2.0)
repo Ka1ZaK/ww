@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# Папка с обоями
+WALLPAPER_DIR="$HOME/Pictures/wal"
+
+echo "Default wallpapers folder in script $WALLPAPER_DIR. Select installation method:"
+echo "1) Enter the file name from /Pictures/wal"
+echo "2) Choose random $WALLPAPER_DIR"
+read -p "Choose 1 or 2: " CHOICE
+
+if [[ "$CHOICE" == "1" ]]; then
+    echo "Available wallpapers:"
+    ls "$WALLPAPER_DIR"
+    read -p "Enter file name (for example, image.png): " USER_FILE
+    SELECTED_WALL="$WALLPAPER_DIR/$USER_FILE"
+    
+    if [[ ! -f "$SELECTED_WALL" ]]; then
+        echo "File $SELECTED_WALL not found! Exit."
+        exit 1
+    fi
+elif [[ "$CHOICE" == "2" ]]; then
+    SELECTED_WALL=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+    if [[ ! -f "$SELECTED_WALL" ]]; then
+        echo "No wallpapers in $WALLPAPER_DIR"
+        exit 1
+    fi
+else
+    echo "Invalid input! Exit."
+    exit 1
+fi
+
+# Применяем обои
+feh --bg-scale "$SELECTED_WALL"
+wal -i "$SELECTED_WALL"
+
+#Xresources
+
+xrdb -merge ~/.Xresources
+
+if [ -z "$WAL_EXECUTED" ]; then
+    export WAL_EXECUTED=1  # Устанавливаем флаг, что команда выполнена
+    wal -R                 # Выполняем команду
+fi
+
+# Dunst
+
+# Загружаем цвета из pywal
+source ~/.cache/wal/colors.sh
+
+# Путь к конфигу Dunst
+DUNST_CONFIG="$HOME/.config/dunst/dunstrc"
+
+# Заменяем цвета в конфиге Dunst
+sed -i "s/frame_color = .*/frame_color = \"$color1\"/" "$DUNST_CONFIG"
+sed -i "s/foreground = .*/foreground = \"$color15\"/" "$DUNST_CONFIG"
+sed -i "s/background = .*/background = \"$color0\"/" "$DUNST_CONFIG"
+
+# Перезапускаем Dunst
+pkill dunst && dunst &
+
+# Alacritty
+
+# Путь к сгенерированным цветам pywal16
+WAL_COLORS_FILE=~/.cache/wal/colors-alacritty.toml
+
+# Путь к конфигу Alacritty
+ALACRITTY_CONFIG=~/.config/alacritty/alacritty.toml
+
+# Перезапись цветов в конфиг
+cat "$WAL_COLORS_FILE" > "$ALACRITTY_CONFIG"
+
+# Добавление [window] с opacity
+echo -e "\n[window]\nopacity = 0.8" >> "$ALACRITTY_CONFIG"
+echo -e "\n[font]\nsize = 12" >> $ALACRITTY_CONFIG
+echo "Alacritty updated with colors and opacity."
+
+# Waybar
+		  
+pkill -SIGUSR2 waybar
+
+# Telegram
+
+wal-telegram
+
+# Firefox
+pywalfox update
