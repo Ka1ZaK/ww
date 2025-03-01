@@ -2,7 +2,7 @@
 ## Works with:
 ```
 Alacritty terminal
-wal-telegram(aur)
+wal-telegram[AUR](https://github.com/guillaumeboehm/wal-telegram)
 Dunst
 Firefox
 Waybar
