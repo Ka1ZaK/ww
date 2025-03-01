@@ -1,4 +1,4 @@
-# Script for Pywal with automatic selection of wallpapers from a folder or selecting them yourself. The script updates the configs of programs that cannot automatically load changes. 
+# Script for Pywal with automatic selection of wallpapers from a folder or selecting them randomly. The script updates the configs of programs that cannot automatically load changes. 
 ## Works with:
 ```
 Alacritty terminal
