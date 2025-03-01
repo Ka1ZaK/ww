@@ -1,11 +1,11 @@
 Script for Pywal with automatic selection of wallpapers from a folder or selecting them yourself. The script updates the configs of programs that cannot automatically load changes. 
 Works with:
 
-alacritty 
-wal-telegram(aur)
-dunst
-Firefox
-waybar
+Alacritty terminal,
+wal-telegram(aur),
+Dunst,
+Firefox,
+Waybar,
 Xresources.
 
 Posted it on Git for safekeeping.
