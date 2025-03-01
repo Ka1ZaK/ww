@@ -14,5 +14,5 @@ To change the default wallpaper directory, change WALLPAPDER_DIR
 
 To install 
 
-mv ww /bin/ or /bin/
+mv ww /bin/ or /sbin/
 
