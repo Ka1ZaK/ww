@@ -16,3 +16,8 @@ To install
 
 mv ww /bin/ or /sbin/
 
+Use ww
+
+After that script update your colors,wallpapers
+
+In the next updates I will expand the number of programs with which the script works.
