@@ -8,6 +8,15 @@ Firefox
 Waybar
 Xresources
 ```
+##Dependecies
+```
+wal-telegram(AUR)
+python-pywalfox(AUR)
+sxiv
+
+```
+
+
 Posted it on Git for safekeeping.
 
 To change the default wallpaper directory, change WALLPAPDER_DIR 
